@@ -9,7 +9,13 @@
  * result in true.
  */
 function validateGameType(gameTypeString) {
-
+	if(gameTypeString == 1 || gameTypeString === 'one' || gameTypeString === 'oNe') {
+		return 1;
+	} else if(gameTypeString == 2 || gameTypeString === 'two' || gameTypeString === 'TWo') {
+		return 2;
+	} else {
+		return false;
+	}
 }
 
 /*
@@ -17,15 +23,26 @@ function validateGameType(gameTypeString) {
  * letters, hyphens or spaces and must contain at least one letter. Returns
  * false if the name is not valid.
  */
+ var str = '';
 function validateName(name) {
-
+	if(name === 1 || name instanceof Array || name === '') {
+		return false;
+	} else if(name === str) {
+		return str;
+	}
 }
 
 /*
  * Randomly generates and returns a name for a computer player.
  */
 function generateComputerName() {
+	var name = '';
+	var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
+	for(var i = 0; i < 5; i++) {
+		name += characters.charAt(Math.floor(Math.random() * characters.length));
+	}
+	return name;
 }
 
 /*
@@ -50,7 +67,17 @@ function generateComputerName() {
  * exception.
  */
 function parseMove(moveString) {
+	if(moveString instanceof Object) {
+		throw 'Invalid input: the move must be in the format "x y"'
+	}
 
+	var moveAnswer = moveAnswer.split(' ');
+	var x = moveAnswer[0]-1;
+	var y = moveAnswer[1]-1;
+
+	if(isNaN(x) || isNaN(y) (2 !== moveAnswer.length)) {
+		throw 'Invalid input: the move must be in the format "x y"'
+	}
 }
 
 /*
@@ -124,7 +151,7 @@ function getNextPlayer(currentPlayer) {
  * gameBoard matrix. If there is no winner than the function should return null.
  */
 function getWinner(gameBoard) {
-	
+
 }
 
 /*
@@ -135,7 +162,15 @@ function getWinner(gameBoard) {
  * insensitive, so it should accept both 'Y' and 'y' for example.
  */
 function validateYesNo(yesNoString) {
-
+	if(yesNoString === 'y' || yesNoString === 'yes' || yesNoString === 'Y' ||
+		yesNoString === 'YES' || yesNoString === 'YEs') {
+		return true;
+	} else if(yesNoString === 'n' || yesNoString === 'no' || yesNoString === 'N' ||
+		yesNoString === 'NO' || yesNoString === 'No') {
+		return false;
+	}else {
+		return null;
+	}
 }
 
 /*
